@@ -1,10 +1,14 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { DogBreeds } from './components/DogBreeds';
+
+const queryClient = new QueryClient();
+
 function App() {
     return (
-        <>
-            <h1 className="text-3xl font-bold underline text-gray-500">
-                Hello from DogBreeds App!
-            </h1>
-        </>
+        <QueryClientProvider client={queryClient}>
+            <DogBreeds />
+        </QueryClientProvider>
     );
 }
 
