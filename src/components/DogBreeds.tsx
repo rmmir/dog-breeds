@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 
-import { Header } from './Header';
-import { DogBreedCard } from './DogBreedCard';
 import { DogBreedData } from '../models/DogBreedModel';
+import { DogBreedCard } from './DogBreedCard';
+import { Header } from './Header';
 
 export const DogBreeds: React.FC = () => {
     const { isLoading, error, data } = useQuery<DogBreedData[], Error>(
@@ -15,14 +15,17 @@ export const DogBreeds: React.FC = () => {
 
     if (isLoading) return 'Loading...';
 
-    if (!data || error) return 'Error loading the dog breeds data: ' + error?.message;
+    if (!data || error)
+        return 'Error loading the dog breeds data: ' + error?.message;
 
     return (
-        <>
-            <Header breedCount={data.length}/>
-            {data?.map((breed: DogBreedData) => (
-                <DogBreedCard key={breed.id} breed={breed} />
-            ))}
-        </>
+        <div className="bg-gray-100 p-5">
+            <Header breedCount={data.length} />
+            <div className='flex flex-wrap gap-3'>
+                {data?.map((breed: DogBreedData) => (
+                    <DogBreedCard key={breed.id} breed={breed} />
+                ))}
+            </div>
+        </div>
     );
 };
