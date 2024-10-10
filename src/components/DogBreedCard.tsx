@@ -1,8 +1,8 @@
-import { DogBreedData } from '../models/DogBreedModel';
+import { DogBreed } from '../models/DogBreedModel';
 
-type DogBreedProps = { breed: DogBreedData };
+type DogBreedProps = { breed: DogBreed };
 
-export const DogBreedCard: React.FC<DogBreedProps> = ({ breed }) => {
+const DogBreedCard: React.FC<DogBreedProps> = ({ breed }) => {
     return (
         <div className='bg-white w-[336px] border-2 border-gray rounded-xl'>
                 <img
@@ -13,7 +13,7 @@ export const DogBreedCard: React.FC<DogBreedProps> = ({ breed }) => {
             <div className='flex flex-col gap-4 p-5'>
                 <div>
                     <p className='font-semibold text-gray-700'>Weight</p>
-                    <p>{breed.weight.metric}</p>
+                    <p>{breed.metric_weight}</p>
                 </div>
                 <div>
                     <p className='font-semibold text-gray-700'>Breed</p>
@@ -35,3 +35,5 @@ export const DogBreedCard: React.FC<DogBreedProps> = ({ breed }) => {
         </div>
     );
 };
+
+export default DogBreedCard;
